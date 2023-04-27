@@ -12,4 +12,14 @@ export class ShareComponent implements OnInit {
   ngOnInit() {
   }
 
+  formVisible = false
+
+  generateLink(){
+    this.formVisible = true
+  }
+
+  cancel(){
+    this.formVisible = false
+  }
+
 }

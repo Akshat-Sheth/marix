@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
 import { first } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -27,7 +28,8 @@ export class UserLoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService:AuthService
+    private authService:AuthService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -59,7 +61,7 @@ export class UserLoginComponent implements OnInit {
       console.log('user')
     }
 
-
+    this.router.navigate(['./dashboard']);
     this.authService.login(this.f['username'].value, this.f['password'].value)
 
 

@@ -52,13 +52,19 @@ svg{
     padding-left: 2%;
 }
 
+/* .header{
+    border: 2px solid red;
+} */
+
+
+
 .body{
     display: flex;
-    /* border: 2px solid hotpink; */
+    /* border: 2px solid hotpink; */ 
 }
 
 .sidenav{
-    /* border: 2px solid red; */
+    /* border-right: 2px solid black; */
 }
 
 .components{
@@ -66,3 +72,6 @@ svg{
     flex:1
 }
 
+li{
+    /* background: #2c3e5096; */
+}

@@ -1,3 +1,17 @@
-<p>
-  share works!
-</p>
+<div class="container">
+  <div class="center_button" *ngIf="!formVisible"  >
+    <button class="generate_link" (click)="generateLink()"  >GENERATE LINK</button>
+  </div>
+  <div class="center_form" *ngIf="formVisible" >
+    
+  </div>
+  <div class="bottom_buttons">
+    <div class="left">
+      <button class="help btn-primary btn">HELP</button>
+    </div>
+    <div class="right">
+      <button class="cancel btn btn-danger "  [disabled]="!formVisible"  (click)="cancel()" >CANCEL</button>
+      <button class="share btn btn-success"  [disabled]="!formVisible"   >SHARE</button>
+    </div>
+  </div>
+</div>
