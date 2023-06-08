@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5"  >
   <div class="center_button" *ngIf="!formVisible"  >
     <button class="generate_link" (click)="generateLink()"  >GENERATE LINK</button>
   </div>
@@ -7,7 +7,16 @@
       <div class="d-flex flex-row justify-content-between align-items-center" >
         <div class="selectAll">
           <input type="checkbox" class="btn-check" id="btncheck1" (click)="selectAll()" autocomplete="off">
-          <label class="btn btn-outline-primary" for="btncheck1">Select All</label>        
+          <ng-container *ngIf="!everyOneSelected" >
+            <label class="btn btn-outline-primary" for="btncheck1">
+              Select All
+            </label>   
+          </ng-container>
+          <ng-container *ngIf="everyOneSelected" >
+            <label class="btn btn-outline-primary" for="btncheck1">
+              UnSelect All
+            </label>   
+          </ng-container>
         </div>
         <div class="searchByDepartment d-flex">
           <span class="input-group-text" id="basic-addon2">
@@ -15,7 +24,7 @@
               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
             </svg>
           </span>
-          <input type="text" class="form-control" placeholder="Search Department" aria-label="Recipient's username" aria-describedby="basic-addon2" #myValue (change)="onSearch(myValue)">
+          <input type="text" class="form-control" placeholder="Search Department" aria-label="Search Department" aria-describedby="basic-addon2" #myValue (change)="onSearch(myValue)">
         </div>
       </div>
       <div class="d-flex flex-column  employeeList" >
@@ -29,16 +38,13 @@
             </tr>
           </thead>
           <tbody>
-        <ng-container  *ngFor="let employee of temp " >
-          <tr #rr>
+        <ng-container *ngFor="let employee of temp " >
+          <tr #temp>
             <th scope="row">{{employee.id}}</th>
             <td>{{employee.name}}</td>
             <td>{{employee.department}}</td>
             <td>
-              <input type="checkbox">
-               <!-- <input type="checkbox" name="selected" id=""> -->
-               <!-- <input type="checkbox" class="btn-check" > -->
-               <!-- <label class="btn btn-outline-primary" for="btn" ></label>           -->
+              <input type="checkbox" [checked]="employee.selected" (click)="checked(employee)" >
               </td>
           </tr>
         </ng-container>
@@ -53,7 +59,7 @@
     </div>
     <div class="right">
       <button class="cancel btn btn-danger "  [disabled]="!formVisible"  (click)="cancel()" >CANCEL</button>
-      <button class="share btn btn-success"  [disabled]="!formVisible"   >SHARE</button>
+      <button class="share btn btn-success"  [disabled]="!formVisible"  (click)="share()" >SHARE</button>
     </div>
   </div>
 </div>
